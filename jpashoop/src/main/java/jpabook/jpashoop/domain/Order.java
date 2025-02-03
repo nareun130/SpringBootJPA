@@ -28,7 +28,7 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "member_id") //! 외래키가 있는 곳 ->연관 관계의 주인
+    @JoinColumn(name = "member_id") //! 외래키가 있는 곳 -> 연관 관계의 주인
     private Member member;
 
     @OneToMany(mappedBy = "order")
