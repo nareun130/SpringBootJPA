@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/jpashop
     username: sa
-    pssword:
+    password:
     driver-class-name: org.h2.Driver
 
   jpa:
@@ -11,7 +11,7 @@ spring:
     properties:
     # System.out을 통해 로그를 남김
     #   show_sql: true
-      format_sql: true
+      format-sql: true
 
 logging:
   level:
