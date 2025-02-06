@@ -2,20 +2,18 @@ package jpabook.jpashoop.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.EntityManager;
 import jpabook.jpashoop.domain.Member;
 import jpabook.jpashoop.repository.MemberRepository;
 
-@SpringBootTest
-@Transactional // * 실행 후 롤백
+@SpringBootTest //* 스프링 부트를 실행 후 테스트
+@Transactional // * 실행 후 롤백 -> Test클래스 한정 롤백
 public class MemberServiceTest {
 
     @Autowired
@@ -49,15 +47,9 @@ public class MemberServiceTest {
         member2.setName("kim");
         // when
         memberService.join(member1);
-        // try{
-        // memberService.join(member2); // 예외 발생!
-        // }catch(IllegalStateException e){
-        // return;
-        // }
+        // then
         assertThrows(IllegalStateException.class, () -> {
             memberService.join(member2);
         });
-        // then
-        // fail("예외가 발생해야 한다.");
     }
 }
